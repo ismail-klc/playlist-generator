@@ -25,7 +25,6 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
     line-height: 1;
-    background-color: darkgray;
 }
 ol, ul {
     list-style: none;
@@ -41,4 +40,56 @@ q:before, q:after {
 table {
     border-collapse: collapse;
     border-spacing: 0;
+}
+
+#root{
+    max-width: 1000px;
+    margin: auto;
+    padding: 0 10px;
+}
+
+a{
+    text-decoration: none;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    align-items: center;
+}
+
+#header{
+    font-size: xx-large;
+    color: black;
+    font-weight: bold;
+}
+
+#header:hover{
+    color: #666;
+}
+
+#generate{
+    background-color: #01A9F4;
+    padding: 8px 16px;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#generate:hover{
+    background-color: #5ec5f5;
+}
+
+#add{
+    margin-left: 10px;
+    padding: 8px 16px;
+    background-color: #cbd4cd;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+}
+
+#add:hover{
+    background-color: #e6ede8;
 }
