@@ -1,5 +1,76 @@
 const getList = () => {
-    return JSON.parse(localStorage.getItem('my-list')) || [];
+    let count = prompt("Bir değer girin", "6");
+
+    if(isNaN(count)){
+        location.replace('/#/')
+        alert("You need to enter a number")
+    }
+
+    let values = JSON.parse(localStorage.getItem('my-list'));
+    let sum = 0;
+    let map = {};
+
+    // find sum
+    for (let i = 0; i < values.length; i++) {
+        sum += values[i].weight
+    }
+
+    let k = parseInt(10000 / sum);
+    sum = 0;
+
+    for (let i = 0; i < values.length; i++) {
+        map[i] = values[i].weight * k
+        values[i].weight = map[i]
+        sum += values[i].weight
+    }
+
+    console.log(sum," uzunluğunda liste oluşturuluyor...");
+
+    // check whether is valid
+    for (let val of values) {
+        if (val.weight - (sum - val.weight) >= 2) {
+            location.replace('/#/')
+            alert("Your list is invalid")
+            break
+        }
+    }
+
+    let tmp = sum;
+    let ans = [];
+    let prev = -1;
+
+    let list = [];
+    for(let i=0; i<values.length; i++){
+        list.push(i)
+    }
+
+    for (let i = 0; i < tmp; i++) {
+        list = list.sort(() => Math.random() - 0.5)
+        for (let key of list) {
+            let isvalid = true;
+
+            if(map[key] < 1 || prev === Number(key)) continue;
+
+            for (let j = 0; j < values.length; j++) {
+                if (j === Number(key)) continue;
+                if (values[j].weight - (sum - 1 - values[j].weight) >= 2) {
+                    isvalid = false;
+                    break;
+                }
+            }
+
+            if (!isvalid) continue;
+
+            ans.push(values[key]);
+            prev = Number(key);
+            values[key].weight--;
+            sum--;
+            map[key]--;
+            break;
+        };
+    }
+
+    return ans.slice(0,count)
 }
 
 let Navbar = {
@@ -13,15 +84,15 @@ let Navbar = {
                 <div class="slideshow-container">
 
                         ${list.map((a, index) =>
-            `
+                            `
                             <div class="mySlides fade">
                                 <div class="numbertext">${index + 1} / ${list.length}</div>
                                 <img src=${a.url} >
                                 <div class="text">${a.name}</div>
                             </div>
                             `
-        ).join('\n ')
-            }
+                            ).join('\n ')
+                                }
 
                         <a class="prev" >&#10094;</a>
                         <a class="next" >&#10095;</a>
@@ -30,11 +101,11 @@ let Navbar = {
 
                     <div style="text-align:center">
                     ${list.map((a, index) =>
-                `
+                        `
                         <span class="dot" data-arg=${index + 1}></span> 
                         `
-            ).join('\n ')
-            }
+                        ).join('\n ')
+                        }
                     
                     </div>
 
@@ -42,7 +113,7 @@ let Navbar = {
         `
         return view
     },
-    after_render: async () => { 
+    after_render: async () => {
         var slideIndex = 1;
         showSlides(slideIndex);
 
