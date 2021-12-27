@@ -1,5 +1,9 @@
+import getList from '../../services/GetData'
+
 let List = {
-    render: async () => {
+    render: async (count) => {
+        let list = getList(count)
+        
         let view = `
             <div>List görünümü</div>
         `
