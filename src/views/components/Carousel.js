@@ -1,11 +1,4 @@
 const getList = () => {
-    let count = prompt("Bir değer girin", "6");
-
-    if(isNaN(count)){
-        location.replace('/#/')
-        alert("You need to enter a number")
-    }
-
     let values = JSON.parse(localStorage.getItem('my-list'));
     let sum = 0;
     let map = {};
@@ -31,8 +24,18 @@ const getList = () => {
         if (val.weight - (sum - val.weight) >= 2) {
             location.replace('/#/')
             alert("Your list is invalid")
-            break
+            return
         }
+    }
+
+    // get count from user
+    let count = prompt("Bir değer girin", "6");
+
+    // check whether is a valid number
+    if(isNaN(count)){
+        location.replace('/#/')
+        alert("You need to enter a number")
+        return 
     }
 
     let tmp = sum;

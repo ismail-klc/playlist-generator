@@ -1,4 +1,5 @@
 import Carousel from '../components/Carousel'
+import List from '../components/List'
 
 let Generate = {
     render: async () => {
@@ -20,9 +21,8 @@ let Generate = {
             if (btn.innerText === "List") {
                 btn.innerText = "Carousel";
 
-                document.querySelector('#simulation').innerHTML = `
-                    <div></div>
-                `
+                document.querySelector('#simulation').innerHTML = await List.render();
+                await List.after_render();
             }
             else {
                 btn.innerText = "List";
