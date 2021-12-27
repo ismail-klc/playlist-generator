@@ -52,6 +52,7 @@ a{
     text-decoration: none;
 }
 
+/* Navbar Styles */
 .navbar{
     display: flex;
     justify-content: space-between;
@@ -92,4 +93,40 @@ a{
 
 #add:hover{
     background-color: #e6ede8;
+}
+
+/* Add New Item Page Styles  */
+#add-page{
+    padding: 20px;
+}
+
+#add-page > .header{
+    font-size: x-large;
+    margin-bottom: 20px;
+}
+
+output{
+    flex: 1;
+}
+
+input{
+    width: 100%;
+    display: block;
+    height: 25px;
+}
+
+label{
+    margin: 10px 0;
+    display: block;
+    font-size: larger;
+}
+
+.add-btn{
+    background-color: #2f80d6;
+    padding: 6px 20px;
+    color: white;
+    border-radius: 10px;
+    margin-top: 10px;
+    display: block;
+    width: 150px;
 }
