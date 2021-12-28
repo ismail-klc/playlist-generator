@@ -9,7 +9,7 @@ const getCountFromUser = () => {
     // check whether is a valid number
     if (isNaN(count)) {
         location.replace('/#/')
-        alert("You need to enter a number")
+        alert("You need to enter a valid number")
         return
     }
 
@@ -31,11 +31,10 @@ let Generate = {
     }
     , after_render: async () => {
         let count = getCountFromUser()
-        let list = getList(count)
+        let list = getList(count) || []
 
         let btn = document.getElementById("list-carousel");
         document.querySelector("#list-carousel").addEventListener('click', async (e) => {
-            console.log(btn.innerText);
             if (btn.innerText === "List") {
                 btn.innerText = "Carousel";
 
@@ -50,7 +49,7 @@ let Generate = {
             }
         })
 
-        if (btn.innerText === "List") {
+        if (btn.innerText === "List" && list.length > 0) {
             document.querySelector('#simulation').innerHTML = await Carousel.render(list);
             await Carousel.after_render();
         }
