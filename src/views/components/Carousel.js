@@ -1,9 +1,5 @@
-import getList from '../../services/GetData'
-
 let Carousel = {
-    render: async (count) => {
-        let list = getList(count)
-
+    render: async (list) => {
         let view = `
             <section>
                 <div class="slideshow-container">

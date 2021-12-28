@@ -1,5 +1,11 @@
 const getList = (count) => {
-    let values = JSON.parse(localStorage.getItem('my-list'));
+    let values = JSON.parse(localStorage.getItem('my-list')) || [];
+    if(values.length === 0){
+        location.replace('/#/')
+        alert("There is no item on the list")
+        return
+    }
+
     let sum = 0;
     let map = {};
 
@@ -17,7 +23,10 @@ const getList = (count) => {
         sum += values[i].weight
     }
 
-    console.log(sum," uzunluğunda liste oluşturuluyor...");
+    console.log(sum, " uzunluğunda liste oluşturuluyor...");
+    for (let val of values) {
+        console.log("%", Math.floor((val.weight / sum) * 100), ": ", val.name);
+    }
 
     // check whether is valid
     for (let val of values) {
@@ -28,14 +37,12 @@ const getList = (count) => {
         }
     }
 
-    
-
     let tmp = sum;
     let ans = [];
     let prev = -1;
 
     let list = [];
-    for(let i=0; i<values.length; i++){
+    for (let i = 0; i < values.length; i++) {
         list.push(i)
     }
 
@@ -44,7 +51,7 @@ const getList = (count) => {
         for (let key of list) {
             let isvalid = true;
 
-            if(map[key] < 1 || prev === Number(key)) continue;
+            if (map[key] < 1 || prev === Number(key)) continue;
 
             for (let j = 0; j < values.length; j++) {
                 if (j === Number(key)) continue;
@@ -65,7 +72,7 @@ const getList = (count) => {
         };
     }
 
-    return ans.slice(0,count)
+    return ans.slice(0, count)
 }
 
 export default getList;
