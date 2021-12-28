@@ -111,11 +111,11 @@ body {
 }
 
 /* Add New Item Page Styles  */
-#add-page {
+.form-page {
     padding: 20px;
 }
 
-#add-page>.header {
+.form-page>.header {
     font-size: x-large;
     margin-bottom: 20px;
 }
@@ -179,6 +179,8 @@ label {
 .edit-btn {
     background-color: #1668be;
     color: white;
+    padding: 5px;
+    font-size: small;
 }
 
 .delete-btn {

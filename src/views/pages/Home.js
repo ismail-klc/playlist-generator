@@ -23,7 +23,7 @@ let Home = {
                             <td>${a.name}</td>
                             <td>Weight: ${a.weight}</td>
                             <td>
-                                <button class="edit-btn" data-arg1=${index}>Edit</button>
+                                <a href="#/edit/${index}" class="edit-btn" data-arg1=${index}>Edit</a>
                                 <button class="delete-btn" data-arg1=${index}>Delete</button>
                             </td>
                         </tr>`
@@ -37,11 +37,6 @@ let Home = {
         return view
     }
     , after_render: async () => {
-        document.querySelectorAll(".edit-btn")
-            .forEach(btn => btn.addEventListener("click", e => {
-                console.log("edit, ", e.target.getAttribute('data-arg1'));
-            }));
-
         document.querySelectorAll(".delete-btn")
             .forEach(btn => btn.addEventListener("click", e => {
                 const index = e.target.getAttribute('data-arg1');

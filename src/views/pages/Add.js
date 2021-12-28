@@ -1,7 +1,7 @@
 let Add = {
     render: async () => {
         let view = `
-            <section id="add-page">
+            <section class="form-page">
                 <h1 class="header"> Add New Item </h1>
                 <form id="add-form">
                     <label>Name</label>

@@ -6,11 +6,13 @@ import Navbar from './views/components/Navbar';
 import Utils from './services/Utils.js'
 import Generate from './views/pages/Generate';
 import Add from './views/pages/Add';
+import Edit from './views/pages/Edit';
 
 const routes = {
     '/': Home,
     '/generate': Generate,
-    '/add': Add
+    '/add': Add,
+    '/edit/:id': Edit
 };
 
 const router = async () => {
