@@ -301,3 +301,17 @@ label {
         font-size: 11px
     }
 }
+
+
+/* List Component Styles */
+
+.myList{
+    position: relative;
+    margin: 10px 0;
+}
+
+.myList img{
+    width: 100%;
+    object-fit: contain;
+    height: 400px;
+}
