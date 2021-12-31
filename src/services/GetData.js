@@ -1,9 +1,9 @@
 const getList = (count) => {
     let values = JSON.parse(localStorage.getItem('my-list')) || [];
-    if(values.length === 0){
+    if(values.length < 2){
         location.replace('/#/')
-        alert("There is no item on the list")
-        return
+        alert("Your list must contain at least 2 items")
+        return []
     }
 
     let sum = 0;
@@ -12,6 +12,16 @@ const getList = (count) => {
     // find sum
     for (let i = 0; i < values.length; i++) {
         sum += values[i].weight
+    }
+
+    // check whether is valid
+    for (let val of values) {
+        if (val.weight - (sum - val.weight) >= 2 || (values.length === 2 && values[0].weight !== values[1].weight)) {
+            console.log(val.weight,sum);
+            location.replace('/#/')
+            alert("Your list is invalid")
+            return []
+        }
     }
 
     let k = parseInt(10000 / sum);
@@ -26,15 +36,6 @@ const getList = (count) => {
     console.log(sum, " uzunluğunda liste oluşturuluyor...");
     for (let val of values) {
         console.log("%", Math.floor((val.weight / sum) * 100), ": ", val.name);
-    }
-
-    // check whether is valid
-    for (let val of values) {
-        if (val.weight - (sum - val.weight) >= 2) {
-            location.replace('/#/')
-            alert("Your list is invalid")
-            return
-        }
     }
 
     let tmp = sum;
