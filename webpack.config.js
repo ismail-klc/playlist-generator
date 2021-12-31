@@ -37,7 +37,6 @@ module.exports = {
         filename: "index.html",
         template: "./public/index.html",
         minify: true,
-        favicon: "./public/favicon.ico"
     })],
 
 }
