@@ -17,7 +17,6 @@ const getList = (count) => {
     // check whether is valid
     for (let val of values) {
         if (val.weight - (sum - val.weight) >= 2 || (values.length === 2 && values[0].weight !== values[1].weight)) {
-            console.log(val.weight,sum);
             location.replace('/#/')
             alert("Your list is invalid")
             return []

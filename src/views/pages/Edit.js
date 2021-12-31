@@ -17,19 +17,20 @@ const getData = () => {
 let Edit = {
     render: async () => {
         let data = getData()
+        console.log(data);
 
         let view = `
         <section class="form-page">
             <h1 class="header"> Edit Item </h1>
             <form id="edit-form">
                 <label>Name</label>
-                <input type="text" name="name" value=${data.name} >
+                <input type="text" name="name" value="${data.name}" >
 
                 <label>Url</label>
-                <input type="text" name="url" value=${data.url} >
+                <input type="text" name="url" value="${data.url}" >
 
                 <label>Weight</label> <output id="output">${data.weight}</output>
-                <input type="range" value=${data.weight} name="weight" min="1" max="10" value="5" id="weight" oninput="output.value = this.value" >
+                <input type="range" value="${data.weight}" name="weight" min="1" max="10" value="5" id="weight" oninput="output.value = this.value" >
                 
 
                 <button type="submit" class="add-btn">Save</button>
