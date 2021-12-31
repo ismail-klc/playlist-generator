@@ -46,7 +46,6 @@ let Carousel = {
             showSlides(slideIndex += 1);
         })
 
-
         document.querySelectorAll(".dot")
             .forEach(btn => btn.addEventListener("click", e => {
                 const index = e.target.getAttribute('data-arg');
@@ -57,6 +56,10 @@ let Carousel = {
             var i;
             var slides = document.getElementsByClassName("mySlides");
             var dots = document.getElementsByClassName("dot");
+            
+            if(slides.length === 0 || dots.length === 0) 
+                return
+            
             for (i = 0; i < slides.length; i++) {
                 slides[i].style.display = "none";  
             }
