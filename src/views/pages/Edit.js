@@ -17,7 +17,6 @@ const getData = () => {
 let Edit = {
     render: async () => {
         let data = getData()
-        console.log(data);
 
         let view = `
         <section class="form-page">
