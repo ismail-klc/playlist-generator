@@ -1,10 +1,14 @@
 {
   "name": "playlist-generator",
+  "jest": {
+    "testEnvironment": "jsdom"
+  },
   "scripts": {
     "start": "live-server dist --verbose",
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
-    "watch": "webpack-dev-server --mode production --open"
+    "watch": "webpack-dev-server --mode production --open",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +20,7 @@
     "babel-loader": "^8.2.3",
     "css-loader": "^6.5.1",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^27.4.5",
     "style-loader": "^3.3.1",
     "webpack": "^5.65.0",
     "webpack-cli": "^4.9.1",

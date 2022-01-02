@@ -24,3 +24,9 @@ $ npm run build
 # run
 $ live-server dist --verbose
 ```
+
+## Test
+
+```bash
+$ npm test
+```
